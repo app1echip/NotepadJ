@@ -1,3 +1,3 @@
 # NotepadJ
 
-NotepadJ is a Microsoft Notepad clone written in Java.
+NotepadJ is a Microsoft Notepad clone made with JavaFX.
