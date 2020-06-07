@@ -1,4 +1,4 @@
-package com.github.app1echip.notepad.StatusBar;
+package com.github.app1echip.notepad.Controller.StatusBar;
 
 
 import javafx.fxml.FXML;

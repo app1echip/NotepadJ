@@ -3,7 +3,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<Menu mnemonicParsing="false" text="Help" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.MenuBar.HelpMenuController">
+<Menu mnemonicParsing="false" text="Help" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.MenuBar.HelpMenuController">
             <items>
               <MenuItem fx:id="viewHelpMenuItem" mnemonicParsing="false" text="View Help" />
                 <MenuItem fx:id="sendFeedbackMenuItem" mnemonicParsing="false" text="Send Feedback" />

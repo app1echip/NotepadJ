@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.StatusBar.StatusController">
+<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.StatusBar.StatusController">
          <children>
             <Label fx:id="lineColumnLabel" alignment="CENTER_RIGHT" text="Ln 1, Col 1" />
             <Label fx:id="zoomLevelLabel" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" text="100%" />

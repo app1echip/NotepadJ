@@ -3,7 +3,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<Menu mnemonicParsing="false" text="Edit" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.MenuBar.EditMenuController">
+<Menu mnemonicParsing="false" text="Edit" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.MenuBar.EditMenuController">
     <items>
         <MenuItem fx:id="undoMenuItem" mnemonicParsing="false" text="Undo" />
         <MenuItem fx:id="cutMenuItem" mnemonicParsing="false" text="Cut" />
@@ -11,7 +11,7 @@
         <MenuItem fx:id="pasteMenuItem" mnemonicParsing="false" text="Paste" />
         <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" text="Delete" />
         <MenuItem fx:id="searchWithBingMenuItem" mnemonicParsing="false" text="Search with Bing..." />
-        <MenuItem fx:id="findMenuItem" mnemonicParsing="false" text="Find..." />
+        <MenuItem fx:id="findMenuItem" mnemonicParsing="false" onAction="#findOnAction" text="Find..." />
         <MenuItem fx:id="findNextMenuItem" mnemonicParsing="false" text="Find Next" />
         <MenuItem fx:id="findPreviousMenuItem" mnemonicParsing="false" text="Find Previous" />
         <MenuItem fx:id="replaceMenuItem" mnemonicParsing="false" text="Replace..." />

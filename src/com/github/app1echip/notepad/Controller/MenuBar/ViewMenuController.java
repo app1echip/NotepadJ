@@ -1,4 +1,4 @@
-package com.github.app1echip.notepad.MenuBar;
+package com.github.app1echip.notepad.Controller.MenuBar;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckMenuItem;

@@ -3,7 +3,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<Menu mnemonicParsing="false" text="File" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.MenuBar.FileMenuController">
+<Menu mnemonicParsing="false" text="File" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.MenuBar.FileMenuController">
     <items>
         <MenuItem fx:id="newMenuItem" mnemonicParsing="false" onAction="#newOnAction" text="New" />
         <MenuItem fx:id="newWindowMenuItem" mnemonicParsing="false" onAction="#newWindowOnAction" text="New Window" />

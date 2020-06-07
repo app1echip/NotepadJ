@@ -1,4 +1,4 @@
-package com.github.app1echip.notepad.Prompt;
+package com.github.app1echip.notepad.Controller.Prompt;
 
 import java.io.File;
 import java.util.Optional;
