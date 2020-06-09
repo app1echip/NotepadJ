@@ -10,8 +10,6 @@
         <MenuItem fx:id="openMenuItem" mnemonicParsing="false" onAction="#openOnAction" text="Open..." />
         <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" onAction="#saveOnAction" text="Save" />
         <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" onAction="#saveAsOnAction" text="Save As..." />
-        <MenuItem fx:id="pageSetupMenuItem" mnemonicParsing="false" text="Page Setup..." />
-        <MenuItem fx:id="printMenuItem" mnemonicParsing="false" text="Print..." />
         <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exitOnClick" text="Exit" />
     </items>
 </Menu>

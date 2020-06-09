@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="122.0" prefWidth="554.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.Prompt.ReplacePromptController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="286.0" minWidth="10.0" prefWidth="140.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.0" minWidth="10.0" prefWidth="326.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="117.0" minWidth="10.0" prefWidth="101.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label text="Find what:" />
+      <TextField fx:id="findWhatTextField" GridPane.columnIndex="1" />
+      <Button fx:id="findNextButton" mnemonicParsing="false" text="Find Next" GridPane.columnIndex="2" />
+      <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Label text="Replace with:" GridPane.rowIndex="1" />
+      <TextField fx:id="replaceWithTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Button fx:id="replaceButton" mnemonicParsing="false" text="Replace" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <CheckBox fx:id="matchCaseCheckBox" mnemonicParsing="false" text="Match case" GridPane.rowIndex="2" />
+      <CheckBox fx:id="wrapAroundCheckBox" mnemonicParsing="false" text="Wrap around" GridPane.rowIndex="3" />
+      <Button fx:id="replaceAllButton" mnemonicParsing="false" text="Replace All" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+   </children>
+</GridPane>

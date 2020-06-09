@@ -5,7 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.NotepadController">
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.NotepadController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -18,9 +18,9 @@
       </MenuBar>
    </top>
    <center>
-   <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0" />
+   <TextArea fx:id="area" prefHeight="200.0" prefWidth="200.0" />
    </center>
    <bottom>
-      <fx:include fx:id="statusHBox" source = "StatusBar/Status.fxml"/>
+      <fx:include fx:id="statusBar" source = "StatusBar/Status.fxml"/>
    </bottom>
 </BorderPane>

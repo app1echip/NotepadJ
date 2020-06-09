@@ -1,9 +1,9 @@
 package com.github.app1echip.notepad.Controller.StatusBar;
 
+import com.github.app1echip.notepad.Service.TextAreaProvider;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 
 public class StatusController {
     private @FXML Label lineColumnLabel;
@@ -21,7 +21,9 @@ public class StatusController {
         lineColumnLabel.setText(String.format("Ln %d, Col %d;", ln, col));
     }
 
-    public void postInitialize(TextArea text) {
-        text.caretPositionProperty().addListener((l, o, n) -> updateLineColumn(text.getText(), n.intValue()));
+    public void postInitialize() {
+        TextAreaProvider area = TextAreaProvider.get();
+        area.getTextArea().caretPositionProperty()
+                .addListener((l, o, n) -> updateLineColumn(area.getTextArea().getText(), n.intValue()));
     }
 }

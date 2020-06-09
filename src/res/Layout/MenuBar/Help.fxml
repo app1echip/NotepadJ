@@ -5,8 +5,6 @@
 
 <Menu mnemonicParsing="false" text="Help" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.MenuBar.HelpMenuController">
             <items>
-              <MenuItem fx:id="viewHelpMenuItem" mnemonicParsing="false" text="View Help" />
-                <MenuItem fx:id="sendFeedbackMenuItem" mnemonicParsing="false" text="Send Feedback" />
                   <MenuItem fx:id="aboutNotepadJMenuItem" mnemonicParsing="false" text="About NotepadJ" />
             </items>
 </Menu>
