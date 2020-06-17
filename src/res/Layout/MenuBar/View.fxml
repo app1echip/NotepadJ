@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
-
-<Menu mnemonicParsing="false" text="View" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.MenuBar.ViewMenuController">
- <items>
-                  <Menu mnemonicParsing="false" text="Zoom">
-                    <items>
-                      <MenuItem fx:id="zoomInMenuItem" mnemonicParsing="false" text="Zoom In" />
-                        <MenuItem fx:id="zoomOutMenuItem" mnemonicParsing="false" text="Zoom Out" />
-                        <MenuItem fx:id="restoreDefaultZoomItem" mnemonicParsing="false" text="Restore Default Zoom" />
-                    </items>
-                  </Menu>
-                  <CheckMenuItem fx:id="statusBarCheckMenuItem" mnemonicParsing="false" selected="true" text="Status Bar" />
-              </items>
+<Menu mnemonicParsing="false" text="View"
+    xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.menu.ViewMenuController">
+    <items>
+        <Menu mnemonicParsing="false" text="Zoom">
+            <items>
+                <MenuItem fx:id="zoomInMenuItem" mnemonicParsing="false" text="Zoom In" />
+                <MenuItem fx:id="zoomOutMenuItem" mnemonicParsing="false" text="Zoom Out" />
+                <MenuItem fx:id="restoreDefaultZoomItem" mnemonicParsing="false" text="Restore Default Zoom" />
+            </items>
+        </Menu>
+        <CheckMenuItem fx:id="statusBarCheckMenuItem" mnemonicParsing="false" selected="true" text="Status Bar" />
+    </items>
 </Menu>

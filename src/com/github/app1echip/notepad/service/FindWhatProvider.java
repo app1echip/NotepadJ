@@ -1,4 +1,4 @@
-package com.github.app1echip.notepad.Service;
+package com.github.app1echip.notepad.service;
 
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;

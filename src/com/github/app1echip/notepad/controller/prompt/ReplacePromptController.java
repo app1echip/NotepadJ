@@ -1,8 +1,8 @@
-package com.github.app1echip.notepad.Controller.Prompt;
+package com.github.app1echip.notepad.controller.prompt;
 
-import com.github.app1echip.notepad.Service.FindWhatProvider;
-import com.github.app1echip.notepad.Service.SearchProvider;
-import com.github.app1echip.notepad.Service.TextAreaProvider;
+import com.github.app1echip.notepad.service.FindWhatProvider;
+import com.github.app1echip.notepad.service.SearchProvider;
+import com.github.app1echip.notepad.service.TextAreaProvider;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

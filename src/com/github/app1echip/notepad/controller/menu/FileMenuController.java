@@ -1,11 +1,11 @@
-package com.github.app1echip.notepad.Controller.MenuBar;
+package com.github.app1echip.notepad.controller.menu;
 
 import java.io.File;
 import java.io.IOException;
 
-import com.github.app1echip.notepad.Controller.Prompt.AskSavePrompt;
-import com.github.app1echip.notepad.Service.FileStorageProvider;
-import com.github.app1echip.notepad.Service.StageProvider;
+import com.github.app1echip.notepad.controller.prompt.AskSavePrompt;
+import com.github.app1echip.notepad.service.FileStorageProvider;
+import com.github.app1echip.notepad.service.StageProvider;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

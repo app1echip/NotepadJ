@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="544.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.Prompt.FindPromptController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="286.0" minWidth="10.0" prefWidth="140.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.0" minWidth="10.0" prefWidth="352.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <Label text="Find what:" />
-      <TextField fx:id="textField" GridPane.columnIndex="1" />
-      <Button fx:id="findNextButton" mnemonicParsing="false" text="Find Next" GridPane.columnIndex="2" />
-      <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
-         <children>
-            <CheckBox fx:id="matchCaseCheckBox" mnemonicParsing="false" text="Match case" />
-            <CheckBox fx:id="wrapAroundCheckBox" mnemonicParsing="false" text="Wrap around" />
-         </children>
-      </VBox>
-      <VBox prefHeight="33.0" prefWidth="352.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <children>
-            <Label text="Direction" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <RadioButton fx:id="directionUpRadioButton" mnemonicParsing="false" text="Up" />
-                  <RadioButton fx:id="directionDownRadioButton" mnemonicParsing="false" text="Down" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="544.0"
+    xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.prompt.FindPromptController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="286.0" minWidth="10.0" prefWidth="140.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.0" minWidth="10.0" prefWidth="352.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label text="Find what:" />
+        <TextField fx:id="textField" GridPane.columnIndex="1" />
+        <Button fx:id="findNextButton" mnemonicParsing="false" text="Find Next" GridPane.columnIndex="2" />
+        <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+            <children>
+                <CheckBox fx:id="matchCaseCheckBox" mnemonicParsing="false" text="Match case" />
+                <CheckBox fx:id="wrapAroundCheckBox" mnemonicParsing="false" text="Wrap around" />
+            </children>
+        </VBox>
+        <VBox prefHeight="33.0" prefWidth="352.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <children>
+                <Label text="Direction" />
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <RadioButton fx:id="directionUpRadioButton" mnemonicParsing="false" text="Up" />
+                        <RadioButton fx:id="directionDownRadioButton" mnemonicParsing="false" text="Down" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </GridPane>

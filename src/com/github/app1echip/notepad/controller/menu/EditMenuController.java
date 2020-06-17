@@ -1,11 +1,11 @@
-package com.github.app1echip.notepad.Controller.MenuBar;
+package com.github.app1echip.notepad.controller.menu;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.github.app1echip.notepad.Service.SearchProvider;
-import com.github.app1echip.notepad.Service.TextAreaProvider;
+import com.github.app1echip.notepad.service.SearchProvider;
+import com.github.app1echip.notepad.service.TextAreaProvider;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

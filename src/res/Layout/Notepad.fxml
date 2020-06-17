@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-
-<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.NotepadController">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <fx:include fx:id="fileMenu" source ="MenuBar/File.fxml"/>
-          <fx:include fx:id="editMenu" source ="MenuBar/Edit.fxml"/>
-          <fx:include fx:id="formatMenu" source ="MenuBar/Format.fxml"/>
-          <fx:include fx:id="viewMenu" source ="MenuBar/View.fxml"/>
-          <fx:include fx:id="helpMenu" source ="MenuBar/Help.fxml"/>
-        </menus>
-      </MenuBar>
-   </top>
-   <center>
-   <TextArea fx:id="area" prefHeight="200.0" prefWidth="200.0" />
-   </center>
-   <bottom>
-      <fx:include fx:id="statusBar" source = "StatusBar/Status.fxml"/>
-   </bottom>
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+    xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.NotepadController">
+    <top>
+        <MenuBar BorderPane.alignment="CENTER">
+            <menus>
+                <fx:include fx:id="fileMenu" source ="MenuBar/File.fxml"/>
+                <fx:include fx:id="editMenu" source ="MenuBar/Edit.fxml"/>
+                <fx:include fx:id="formatMenu" source ="MenuBar/Format.fxml"/>
+                <fx:include fx:id="viewMenu" source ="MenuBar/View.fxml"/>
+                <fx:include fx:id="helpMenu" source ="MenuBar/Help.fxml"/>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <TextArea fx:id="area" prefHeight="200.0" prefWidth="200.0" />
+    </center>
+    <bottom>
+        <fx:include fx:id="statusBar" source = "StatusBar/Status.fxml"/>
+    </bottom>
 </BorderPane>

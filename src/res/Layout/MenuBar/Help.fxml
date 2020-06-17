@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
-
-<Menu mnemonicParsing="false" text="Help" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.Controller.MenuBar.HelpMenuController">
-            <items>
-                  <MenuItem fx:id="aboutNotepadJMenuItem" mnemonicParsing="false" text="About NotepadJ" />
-            </items>
+<Menu mnemonicParsing="false" text="Help"
+    xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.menu.HelpMenuController">
+    <items>
+        <MenuItem fx:id="aboutNotepadJMenuItem" mnemonicParsing="false" text="About NotepadJ" />
+    </items>
 </Menu>

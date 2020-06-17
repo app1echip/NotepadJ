@@ -1,8 +1,8 @@
-package com.github.app1echip.notepad.Controller.MenuBar;
+package com.github.app1echip.notepad.controller.menu;
 
 import java.io.IOException;
 
-import com.github.app1echip.notepad.Service.TextAreaProvider;
+import com.github.app1echip.notepad.service.TextAreaProvider;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

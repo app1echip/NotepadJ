@@ -3,8 +3,8 @@ package com.github.app1echip.notepad;
 import java.io.File;
 import java.util.List;
 
-import com.github.app1echip.notepad.Service.FileStorageProvider;
-import com.github.app1echip.notepad.Service.StageProvider;
+import com.github.app1echip.notepad.service.FileStorageProvider;
+import com.github.app1echip.notepad.service.StageProvider;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

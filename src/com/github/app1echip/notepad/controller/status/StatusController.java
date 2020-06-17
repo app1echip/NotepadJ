@@ -1,6 +1,6 @@
-package com.github.app1echip.notepad.Controller.StatusBar;
+package com.github.app1echip.notepad.controller.status;
 
-import com.github.app1echip.notepad.Service.TextAreaProvider;
+import com.github.app1echip.notepad.service.TextAreaProvider;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
