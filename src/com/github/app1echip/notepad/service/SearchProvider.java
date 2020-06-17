@@ -3,71 +3,70 @@ package com.github.app1echip.notepad.service;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class SearchProvider {
     private static SearchProvider instance = new SearchProvider();
+
+    private SearchProvider() {
+        matchCase.addListener((l, o, n) -> dirty = true);
+        wrapAround.addListener((l, o, n) -> dirty = true);
+        query.addListener((l, o, n) -> dirty = true);
+        start.addListener((l, o, n) -> dirty = true);
+    }
 
     public static SearchProvider get() {
         return instance;
     }
 
     public enum DIRECTION {
-        UP, DOWN
+        UP, DW
     }
 
-    private String context = "";
-    private String query = "";
-    private int start = 0;
+    public enum SWITCH {
+        NEXT, PREV
+    }
+
     private int nowAt = -1;
 
-    private boolean matchCase = false;
-    private boolean wrapAround = false;
-    private DIRECTION direction = DIRECTION.DOWN;
+    private DIRECTION direction = DIRECTION.DW;
+    private BooleanProperty matchCase = new SimpleBooleanProperty();
+    private BooleanProperty wrapAround = new SimpleBooleanProperty();
+    private StringProperty query = new SimpleStringProperty("");
+    private IntegerProperty start = new SimpleIntegerProperty();
+    private StringProperty replacer = new SimpleStringProperty(new String());
+
+    public BooleanProperty matchCaseProperty() {
+        return matchCase;
+    }
+
+    public BooleanProperty wrapAroundProperty() {
+        return wrapAround;
+    }
+
+    public StringProperty queryProperty() {
+        return query;
+    }
+
+    public StringProperty replacerProperty() {
+        return replacer;
+    }
+
+    public IntegerProperty startProperty() {
+        return start;
+    }
 
     private boolean dirty = true;
 
     private ArrayList<Integer> indexes = new ArrayList<>();
 
-    public void setClean() {
-        dirty = false;
-    }
-
-    public void setContext(String context) {
-        if (!context.equals(this.context)) {
-            this.context = context;
-            dirty = true;
-        }
-    }
-
-    public String getQuery() {
-        return query;
-    }
-
-    public void setQuery(String query) {
-        if (!query.equals(this.query)) {
-            this.query = query;
-            dirty = true;
-        }
-    }
-
-    public void setStart(int start) {
-        if (start != this.start) {
-            this.start = start;
-            dirty = true;
-        }
-    }
-
-    public void setMatchCase(boolean matchCase) {
-        if (matchCase != this.matchCase) {
-            this.matchCase = matchCase;
-            dirty = true;
-        }
-    }
-
-    public void setWrapAround(boolean wrapAround) {
-        if (wrapAround != this.wrapAround) {
-            this.wrapAround = wrapAround;
-            dirty = true;
-        }
+    public void setDirty(boolean dirty) {
+        this.dirty = dirty;
     }
 
     public void setDirection(DIRECTION direction) {
@@ -77,71 +76,70 @@ public class SearchProvider {
         }
     }
 
-    public int findNext() {
-        if (dirty) {
-            updateIndexes();
-            dirty = false;
-            return indexes.get(nowAt);
-        }
-        if (indexes.size() == 0)
-            return -1;
-        if (wrapAround)
-            nowAt = (nowAt + 1) % indexes.size();
-        else if (nowAt + 1 == indexes.size())
-            return -1;
-        else
-            nowAt++;
-        return indexes.get(nowAt);
+    public void find(SWITCH sw) {
+        find(sw, false);
     }
 
-    public int findPrevious() {
-        if (dirty) {
+    public void find(SWITCH sw, boolean replace) {
+        if (dirty)
             updateIndexes();
-            dirty = false;
-            return indexes.get(nowAt);
-        }
         if (indexes.size() == 0)
-            return -1;
-        if (wrapAround)
-            nowAt = (nowAt - 1) % indexes.size();
-        else if (nowAt == 0)
-            return -1;
+            return;
+        int shift = sw == SWITCH.NEXT ? 1 : -1;
+        int limit = sw == SWITCH.NEXT ? indexes.size() - 1 : 0;
+        if (wrapAround.get())
+            nowAt = (nowAt + shift) % indexes.size();
         else
-            nowAt--;
-        return indexes.get(nowAt);
+            nowAt += nowAt != limit ? shift : 0;
+        int index = indexes.get(nowAt);
+        int length = query.get().length();
+        if (replace) {
+            InputHolder.get().text().replaceText(index, index + length, replacer.get());
+            length = replacer.get().length();
+        }
+        InputHolder.get().text().selectRange(index, index + length);
+        dirty = false;
+    }
+
+    public void replaceAll() {
+        String context = InputHolder.get().text().getText();
+        context = context.replaceAll(query.get(), replacer.get());
+        InputHolder.get().text().setText(context);
     }
 
     private void updateIndexes() {
-        if (!matchCase) {
+        nowAt = -1;
+        indexes.clear();
+        String context = InputHolder.get().text().getText();
+        String query = this.query.get();
+        if (!matchCase.get()) {
             context = context.toLowerCase();
             query = query.toLowerCase();
         }
-        indexes.clear();
-        nowAt = -1;
         int index;
-        if (direction == DIRECTION.DOWN) {
-            index = context.indexOf(query, start);
+        if (direction == DIRECTION.DW) {
+            index = context.indexOf(query, start.get());
             while (index != -1) {
                 indexes.add(index);
                 index = ++index != context.length() ? context.indexOf(query, index) : -1;
             }
-            if (wrapAround) {
+            if (wrapAround.get()) {
                 index = context.indexOf(query);
-                while (index != -1 && index < start) {
+                while (index != -1 && index < start.get()) {
                     indexes.add(index);
                     index = context.indexOf(query, index + 1);
                 }
             }
         } else {
             index = context.indexOf(query);
-            while (index != -1 && index < start) {
+            while (index != -1 && index < start.get()) {
                 indexes.add(index);
                 index = context.indexOf(query, index + 1);
             }
             Collections.reverse(indexes);
-            if (wrapAround) {
+            if (wrapAround.get()) {
                 ArrayList<Integer> optional = new ArrayList<>();
-                index = context.indexOf(query, start);
+                index = context.indexOf(query, start.get());
                 while (index != -1) {
                     optional.add(index);
                     index = ++index != context.length() ? context.indexOf(query, index) : -1;
@@ -150,7 +148,5 @@ public class SearchProvider {
                 indexes.addAll(optional);
             }
         }
-        if (indexes.size() != 0)
-            nowAt = 0;
     }
 }

@@ -1,6 +1,9 @@
 package com.github.app1echip.notepad.controller.status;
 
-import com.github.app1echip.notepad.service.TextAreaProvider;
+import com.github.app1echip.notepad.service.FileStorageProvider;
+import com.github.app1echip.notepad.service.FontProvider;
+import com.github.app1echip.notepad.service.StatusProvider;
+import com.github.app1echip.notepad.service.InputHolder;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,19 +14,18 @@ public class StatusController {
     private @FXML Label lineSeparatorLabel;
     private @FXML Label encodingLabel;
 
-    private void updateLineColumn(String content, int caret) {
-        int ln = 1, col = caret + 1, id = content.indexOf(System.lineSeparator());
-        while (id < caret && id != -1) {
-            col = caret - id;
-            id = content.indexOf(System.lineSeparator(), id + 1);
-            ln++;
-        }
-        lineColumnLabel.setText(String.format("Ln %d, Col %d;", ln, col));
+    public void postInitialize() {
+        InputHolder.get().text().caretPositionProperty().addListener((l, o, n) -> {
+            int[] cord = StatusProvider.get().getLnCol();
+            lineColumnLabel.setText(String.format("Ln %d, Col %d", cord[0], cord[1]));
+        });
+
     }
 
-    public void postInitialize() {
-        TextAreaProvider area = TextAreaProvider.get();
-        area.getTextArea().caretPositionProperty()
-                .addListener((l, o, n) -> updateLineColumn(area.getTextArea().getText(), n.intValue()));
+    private @FXML void initialize() {
+        lineSeparatorLabel.setText(FileStorageProvider.get().sep.equals("\n") ? "Unix (LF)" : "Windows (CRLF)");
+        FontProvider.get().scale
+                .addListener((l, o, n) -> zoomLevelLabel.setText(String.format("%d%%", (int) (n.doubleValue() * 100))));
+        encodingLabel.setText(System.getProperty("file.encoding"));
     }
 }

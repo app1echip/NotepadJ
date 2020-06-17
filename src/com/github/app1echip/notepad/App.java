@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import com.github.app1echip.notepad.service.FileStorageProvider;
-import com.github.app1echip.notepad.service.StageProvider;
+import com.github.app1echip.notepad.service.TitleProvider;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,11 +14,9 @@ import javafx.stage.Stage;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
+        TitleProvider.get().register(stage);
         List<String> args = getParameters().getRaw();
         FileStorageProvider.get().setFile(args.size() != 0 ? new File(args.get(0)) : null);
-        FileStorageProvider.get().loadFromFile();
-        StageProvider.get().setStage(stage);
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/Layout/Notepad.fxml"));
         stage.setScene(new Scene(loader.load()));
         stage.show();

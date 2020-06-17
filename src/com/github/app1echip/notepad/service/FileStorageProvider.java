@@ -7,9 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.stream.Collectors;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class FileStorageProvider {
     private static FileStorageProvider instance = new FileStorageProvider();
 
@@ -17,47 +14,52 @@ public class FileStorageProvider {
         return instance;
     }
 
-    private StringProperty display = new SimpleStringProperty("");
-    private String buffer = "";
+    private String buffer;
     private File file;
-
-    public void setFile(File file) {
-        this.file = file;
-    }
+    public String sep = System.lineSeparator();
 
     public File getFile() {
         return file;
     }
 
-    public void flush() {
-        buffer = "";
-        display.setValue(buffer);
-    }
-
-    public StringProperty getDisplay() {
-        return display;
-    }
-
     public boolean dirty() {
-        return !display.getValue().equals(buffer);
+        return !InputHolder.get().text().getText().equals(buffer);
     }
 
-    public void loadFromFile() {
-        if (file != null)
+    public void setFile(File file) {
+        this.file = file;
+        TitleProvider.get().update(file);
+    }
+
+    public void load(File file) {
+        setFile(file);
+        if (file != null) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                buffer = reader.lines().collect(Collectors.joining(System.lineSeparator()));
-                display.setValue(buffer);
+                int c = reader.read();
+                while (c != -1 && c != '\r')
+                    c = reader.read();
+                if (c == '\r')
+                    sep = "\r\n";
+            } catch (Exception e) {
+
+            }
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                buffer = reader.lines().collect(Collectors.joining(sep));
+                InputHolder.get().text().setText(buffer);
             } catch (Exception e) {
                 // TODO: handle exception
             }
-        else
-            flush();
+        } else {
+            buffer = "";
+            InputHolder.get().text().clear();
+        }
     }
 
-    public void saveToFile() {
+    public void save(File file) {
+        setFile(file);
         if (file != null)
             try (FileWriter writer = new FileWriter(file)) {
-                buffer = display.getValue();
+                buffer = InputHolder.get().text().getText();
                 writer.write(buffer);
             } catch (IOException exception) {
                 // TODO: handle exception

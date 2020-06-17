@@ -1,6 +1,6 @@
 package com.github.app1echip.notepad.controller.prompt;
 
-import com.github.app1echip.notepad.service.TextAreaProvider;
+import com.github.app1echip.notepad.service.InputHolder;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,8 +13,8 @@ public class GoToPromptController {
 
     private @FXML void initialize() {
         goToButton.setOnAction(e -> {
-            TextAreaProvider area = TextAreaProvider.get();
-            String text = area.getTextArea().getText();
+            InputHolder area = InputHolder.get();
+            String text = area.text().getText();
             int ln = 1;
             try {
                 String input = textField.getText();
@@ -28,7 +28,7 @@ public class GoToPromptController {
                     ln--;
             }
             if (i != text.length()) {
-                area.getTextArea().positionCaret(i);
+                area.text().positionCaret(i);
                 textField.getScene().getWindow().hide();
             } else {
                 // TODO: alert

@@ -1,7 +1,7 @@
 package com.github.app1echip.notepad.controller.prompt;
 
 import com.github.app1echip.notepad.service.FontProvider;
-import com.github.app1echip.notepad.service.TextAreaProvider;
+import com.github.app1echip.notepad.service.InputHolder;
 
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -57,7 +57,7 @@ public class FontSelectorController {
             try {
                 double inputSize = Double.parseDouble(sizeTextField.getText());
                 if (inputSize >= 0)
-                    FontProvider.get().fontSize = inputSize;
+                    FontProvider.get().fontSize.set(inputSize);
             } catch (Exception exception) {
                 // TODO: handle exception
             }
@@ -66,7 +66,7 @@ public class FontSelectorController {
     }
 
     public void postInitialize() {
-        fontTextField.setText(TextAreaProvider.get().getTextArea().getFont().getFamily().toString());
-        sizeTextField.setText(String.valueOf((int) TextAreaProvider.get().getTextArea().getFont().getSize()));
+        fontTextField.setText(InputHolder.get().text().getFont().getFamily().toString());
+        sizeTextField.setText(String.valueOf((int) InputHolder.get().text().getFont().getSize()));
     }
 }

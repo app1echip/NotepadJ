@@ -11,18 +11,28 @@ public class StatusProvider {
     }
 
     private HBox statusBar;
+    private BorderPane pane;
 
-    public void setStatusBar(HBox statusBar) {
+    public void setShow(boolean display) {
+        pane.setBottom(display ? statusBar : null);
+    }
+
+    public void register(BorderPane pane, HBox statusBar) {
+        this.pane = pane;
         this.statusBar = statusBar;
     }
 
-    private BorderPane pane;
-
-    public void setPane(BorderPane pane) {
-        this.pane = pane;
-    }
-
-    public void setDisplay(boolean display) {
-        pane.setBottom(display ? statusBar : null);
+    public int[] getLnCol() {
+        int caret = InputHolder.get().text().getCaretPosition();
+        String content = InputHolder.get().text().getText();
+        int ln = 1;
+        int col = caret + 1;
+        int id = content.indexOf(FileStorageProvider.get().sep);
+        while (id < caret && id != -1) {
+            col = caret - id;
+            id = content.indexOf(FileStorageProvider.get().sep, id + 1);
+            ln++;
+        }
+        return new int[] { ln, col };
     }
 }

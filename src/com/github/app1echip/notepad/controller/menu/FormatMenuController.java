@@ -1,8 +1,6 @@
 package com.github.app1echip.notepad.controller.menu;
 
-import java.io.IOException;
-
-import com.github.app1echip.notepad.service.TextAreaProvider;
+import com.github.app1echip.notepad.service.InputHolder;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,15 +14,11 @@ public class FormatMenuController {
     private @FXML MenuItem fontMenuItem;
     private Stage fontSelector = new Stage();
 
-    private @FXML void initialize() {
+    private @FXML void initialize() throws Exception {
         wordWrapCheckMenuItem.selectedProperty()
-                .addListener((l, o, n) -> TextAreaProvider.get().getTextArea().setWrapText(n));
+                .addListener((l, o, n) -> InputHolder.get().text().setWrapText(n));
         fontMenuItem.setOnAction(e -> fontSelector.show());
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/Layout/Prompt/FontSelector.fxml"));
-            fontSelector.setScene(new Scene(loader.load()));
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-        }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/res/Layout/Prompt/FontSelector.fxml"));
+        fontSelector.setScene(new Scene(loader.load()));
     }
 }

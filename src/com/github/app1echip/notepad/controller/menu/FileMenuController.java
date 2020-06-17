@@ -5,12 +5,12 @@ import java.io.IOException;
 
 import com.github.app1echip.notepad.controller.prompt.AskSavePrompt;
 import com.github.app1echip.notepad.service.FileStorageProvider;
-import com.github.app1echip.notepad.service.StageProvider;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class FileMenuController {
     private @FXML MenuItem newMenuItem;
@@ -32,8 +32,7 @@ public class FileMenuController {
                     return;
             }
         }
-        FileStorageProvider.get().setFile(null);
-        FileStorageProvider.get().loadFromFile();
+        FileStorageProvider.get().load(null);
     }
 
     private @FXML void newWindowOnAction(ActionEvent event) {
@@ -59,25 +58,22 @@ public class FileMenuController {
                     return;
             }
         }
-        File file = new FileChooser().showOpenDialog(StageProvider.get().getStage());
-        storage.setFile(file);
-        storage.loadFromFile();
+        File file = new FileChooser().showOpenDialog(new Stage());
+        storage.load(file);
     }
 
     private @FXML void saveOnAction(ActionEvent event) {
         FileStorageProvider storage = FileStorageProvider.get();
-        if (storage.getFile() == null) {
-            File file = new FileChooser().showSaveDialog(StageProvider.get().getStage());
-            storage.setFile(file);
-        }
-        storage.saveToFile();
+        File file = storage.getFile();
+        if (file == null)
+            file = new FileChooser().showSaveDialog(new Stage());
+        storage.save(file);
     }
 
     private @FXML void saveAsOnAction(ActionEvent event) {
         FileStorageProvider storage = FileStorageProvider.get();
-        File file = new FileChooser().showSaveDialog(StageProvider.get().getStage());
-        storage.setFile(file);
-        storage.saveToFile();
+        File file = new FileChooser().showSaveDialog(new Stage());
+        storage.save(file);
     }
 
     private @FXML void exitOnClick(ActionEvent event) {

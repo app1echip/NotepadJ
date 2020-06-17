@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.input.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
-<Menu mnemonicParsing="false" text="Edit"
-    xmlns="http://javafx.com/javafx/8"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.menu.EditMenuController">
+
+<Menu mnemonicParsing="false" text="Edit" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.menu.EditMenuController">
     <items>
         <MenuItem fx:id="undoMenuItem" mnemonicParsing="false" text="Undo" />
-        <MenuItem fx:id="cutMenuItem" mnemonicParsing="false" text="Cut" />
-        <MenuItem fx:id="copyMenuItem" mnemonicParsing="false" text="Copy" />
+      <MenuItem fx:id="redoMenuItem" mnemonicParsing="false" text="Redo" />
+        <MenuItem fx:id="cutMenuItem" disable="true" mnemonicParsing="false" text="Cut" />
+        <MenuItem fx:id="copyMenuItem" disable="true" mnemonicParsing="false" text="Copy" />
         <MenuItem fx:id="pasteMenuItem" mnemonicParsing="false" text="Paste" />
-        <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" text="Delete" />
+        <MenuItem fx:id="deleteMenuItem" disable="true" mnemonicParsing="false" text="Delete" />
         <MenuItem fx:id="findMenuItem" mnemonicParsing="false" text="Find...">
             <accelerator>
                 <KeyCodeCombination alt="UP" code="F" control="ANY" meta="UP" shift="UP" shortcut="UP" />
             </accelerator>
         </MenuItem>
-        <MenuItem fx:id="findNextMenuItem" mnemonicParsing="false" text="Find Next" />
-        <MenuItem fx:id="findPreviousMenuItem" mnemonicParsing="false" text="Find Previous">
+        <MenuItem fx:id="findNextMenuItem" disable="true" mnemonicParsing="false" text="Find Next" />
+        <MenuItem fx:id="findPreviousMenuItem" disable="true" mnemonicParsing="false" text="Find Previous">
             <accelerator>
                 <KeyCodeCombination alt="UP" code="F3" control="UP" meta="UP" shift="ANY" shortcut="UP" />
             </accelerator>

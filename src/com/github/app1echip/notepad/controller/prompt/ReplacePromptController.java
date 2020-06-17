@@ -1,8 +1,7 @@
 package com.github.app1echip.notepad.controller.prompt;
 
-import com.github.app1echip.notepad.service.FindWhatProvider;
 import com.github.app1echip.notepad.service.SearchProvider;
-import com.github.app1echip.notepad.service.TextAreaProvider;
+import com.github.app1echip.notepad.service.SearchProvider.SWITCH;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,34 +19,12 @@ public class ReplacePromptController {
     private @FXML CheckBox wrapAroundCheckBox;
 
     private @FXML void initialize() {
-        FindWhatProvider option = FindWhatProvider.get();
-        findWhatTextField.textProperty().bindBidirectional(option.getField().textProperty());
-        matchCaseCheckBox.selectedProperty().bindBidirectional(option.getMatchCase().selectedProperty());
-        wrapAroundCheckBox.selectedProperty().bindBidirectional(option.getWrapAround().selectedProperty());
-        findNextButton.setOnAction((e) -> {
-            int index = SearchProvider.get().findNext();
-            int length = SearchProvider.get().getQuery().length();
-            if (index != -1) {
-                TextAreaProvider.get().getTextArea().selectRange(index, index + length);
-                SearchProvider.get().setClean();
-            }
-        });
-        replaceButton.setOnAction(e -> {
-            int index = SearchProvider.get().findNext();
-            int length = SearchProvider.get().getQuery().length();
-            if (index != -1) {
-                TextAreaProvider area = TextAreaProvider.get();
-                area.getTextArea().replaceText(index, index + length, replaceWithTextField.getText());
-                area.getTextArea().selectRange(index, index + length);
-                SearchProvider.get().setClean();
-            }
-        });
-
-        replaceAllButton.setOnAction(e -> {
-            TextAreaProvider area = TextAreaProvider.get();
-            String replaced = area.getTextArea().getText().replaceAll(findWhatTextField.getText(),
-                    replaceWithTextField.getText());
-            area.getTextArea().setText(replaced);
-        });
+        findWhatTextField.textProperty().bindBidirectional(SearchProvider.get().queryProperty());
+        replaceWithTextField.textProperty().bindBidirectional(SearchProvider.get().replacerProperty());
+        matchCaseCheckBox.selectedProperty().bindBidirectional(SearchProvider.get().matchCaseProperty());
+        wrapAroundCheckBox.selectedProperty().bindBidirectional(SearchProvider.get().wrapAroundProperty());
+        findNextButton.setOnAction(e -> SearchProvider.get().find(SWITCH.NEXT));
+        replaceButton.setOnAction(e -> SearchProvider.get().find(SWITCH.NEXT, true));
+        replaceAllButton.setOnAction(e -> SearchProvider.get().replaceAll());
     }
 }

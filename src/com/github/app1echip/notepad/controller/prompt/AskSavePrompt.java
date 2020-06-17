@@ -3,6 +3,8 @@ package com.github.app1echip.notepad.controller.prompt;
 import java.io.File;
 import java.util.Optional;
 
+import com.github.app1echip.notepad.service.TitleProvider;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
@@ -14,7 +16,7 @@ public class AskSavePrompt {
         Alert alert = new Alert(AlertType.NONE);
         alert.setTitle("Notepad");
         alert.setHeaderText(null);
-        alert.setContentText(String.format("Do you want to save changes to%s?", file));
+        alert.setContentText(String.format("Do you want to save changes to %s?", file));
         ButtonType saveButtonType = new ButtonType("Save");
         ButtonType doNotSaveButtonType = new ButtonType("Don't Save");
         ButtonType cancelButtonType = new ButtonType("Cancel");
@@ -29,7 +31,7 @@ public class AskSavePrompt {
     }
 
     public AskSavePrompt(File file) {
-        this.file = file == null ? " Untitled" : "\n" + file.toString();
+        this.file = TitleProvider.get().update(file);
     }
 
     public enum ANSWER {

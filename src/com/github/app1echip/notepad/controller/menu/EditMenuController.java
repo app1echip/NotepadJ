@@ -1,11 +1,11 @@
 package com.github.app1echip.notepad.controller.menu;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.github.app1echip.notepad.service.SearchProvider;
-import com.github.app1echip.notepad.service.TextAreaProvider;
+import com.github.app1echip.notepad.service.SearchProvider.SWITCH;
+import com.github.app1echip.notepad.service.InputHolder;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 public class EditMenuController {
     private @FXML MenuItem undoMenuItem;
+    private @FXML MenuItem redoMenuItem;
     private @FXML MenuItem cutMenuItem;
     private @FXML MenuItem copyMenuItem;
     private @FXML MenuItem pasteMenuItem;
@@ -27,66 +28,48 @@ public class EditMenuController {
     private @FXML MenuItem goToMenuItem;
     private @FXML MenuItem selectAllMenuItem;
     private @FXML MenuItem timeDateMenuItem;
-    private Stage findPrompt = new Stage();
-    private Stage replacePrompt = new Stage();
-    private Stage goToPrompt = new Stage();
 
-    private @FXML void initialize() {
-        undoMenuItem.setOnAction(e -> TextAreaProvider.get().getTextArea().undo());
-        cutMenuItem.setOnAction(e -> TextAreaProvider.get().getTextArea().cut());
-        copyMenuItem.setOnAction(e -> TextAreaProvider.get().getTextArea().copy());
-        pasteMenuItem.setOnAction(e -> TextAreaProvider.get().getTextArea().paste());
-        deleteMenuItem.setOnAction(e -> TextAreaProvider.get().getTextArea()
-                .deleteText(TextAreaProvider.get().getTextArea().getSelection()));
+    private @FXML void initialize() throws Exception {
+        undoMenuItem.setOnAction(e -> InputHolder.get().text().undo());
+        redoMenuItem.setOnAction(e -> InputHolder.get().text().redo());
+        cutMenuItem.setOnAction(e -> InputHolder.get().text().cut());
+        copyMenuItem.setOnAction(e -> InputHolder.get().text().copy());
+        pasteMenuItem.setOnAction(e -> InputHolder.get().text().paste());
+        deleteMenuItem.setOnAction(e -> InputHolder.get().text().deleteText(InputHolder.get().text().getSelection()));
+        selectAllMenuItem.setOnAction(e -> InputHolder.get().text().selectAll());
+        Stage findPrompt = new Stage();
+        findPrompt.setScene(new Scene(new FXMLLoader(getClass().getResource("/res/Layout/Prompt/Find.fxml")).load()));
         findMenuItem.setOnAction(e -> findPrompt.show());
+        findNextMenuItem.setOnAction(e -> SearchProvider.get().find(SWITCH.NEXT));
+        findPreviousMenuItem.setOnAction(e -> SearchProvider.get().find(SWITCH.PREV));
+        Stage replacePrompt = new Stage();
+        replacePrompt
+                .setScene(new Scene(new FXMLLoader(getClass().getResource("/res/Layout/Prompt/Replace.fxml")).load()));
         replaceMenuItem.setOnAction(e -> replacePrompt.show());
+        Stage goToPrompt = new Stage();
+        goToPrompt.setScene(new Scene(new FXMLLoader(getClass().getResource("/res/Layout/Prompt/GoTo.fxml")).load()));
         goToMenuItem.setOnAction(e -> goToPrompt.show());
-        selectAllMenuItem.setOnAction(e -> TextAreaProvider.get().getTextArea().selectAll());
-
-        try {
-            FXMLLoader findPromptLoader = new FXMLLoader(getClass().getResource("/res/Layout/Prompt/Find.fxml"));
-            findPrompt.setScene(new Scene(findPromptLoader.load()));
-            FXMLLoader replacePromptLoader = new FXMLLoader(getClass().getResource("/res/Layout/Prompt/Replace.fxml"));
-            replacePrompt.setScene(new Scene(replacePromptLoader.load()));
-            FXMLLoader goToPromptLoader = new FXMLLoader(getClass().getResource("/res/Layout/Prompt/GoTo.fxml"));
-            goToPrompt.setScene(new Scene(goToPromptLoader.load()));
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-        }
-    }
-
-    private @FXML void findNextOnAction(ActionEvent event) {
-        int index = SearchProvider.get().findNext();
-        int length = SearchProvider.get().getQuery().length();
-        if (index != -1) {
-            TextAreaProvider.get().getTextArea().selectRange(index, index + length);
-            SearchProvider.get().setClean();
-        }
-    }
-
-    public @FXML void findPreviousOnAction(ActionEvent event) {
-        int index = SearchProvider.get().findPrevious();
-        int length = SearchProvider.get().getQuery().length();
-        if (index != -1) {
-            TextAreaProvider.get().getTextArea().selectRange(index, index + length);
-            SearchProvider.get().setClean();
-        }
+        SearchProvider.get().queryProperty().addListener((l, o, n) -> {
+            findNextMenuItem.setDisable(n.length() == 0);
+            findPreviousMenuItem.setDisable(n.length() == 0);
+        });
     }
 
     public @FXML void timeDateOnAction(ActionEvent event) {
-        int caret = TextAreaProvider.get().getTextArea().getCaretPosition();
+        int caret = InputHolder.get().text().getCaretPosition();
         SimpleDateFormat format = new SimpleDateFormat("H:mm M/d/y");
         Date timeDate = new Date(System.currentTimeMillis());
-        TextAreaProvider.get().getTextArea().insertText(caret, format.format(timeDate));
+        InputHolder.get().text().insertText(caret, format.format(timeDate));
     }
 
     public void postInitialize() {
-        undoMenuItem.disableProperty().bind(TextAreaProvider.get().getTextArea().undoableProperty().not());
-
-        TextAreaProvider.get().getTextArea().textProperty().addListener((l, o, n) -> {
-            findMenuItem.setDisable(n.length() == 0);
-            findNextMenuItem.setDisable(n.length() == 0 || SearchProvider.get().getQuery().length() == 0);
-            findPreviousMenuItem.setDisable(n.length() == 0 || SearchProvider.get().getQuery().length() == 0);
+        undoMenuItem.disableProperty().bind(InputHolder.get().text().undoableProperty().not());
+        redoMenuItem.disableProperty().bind(InputHolder.get().text().redoableProperty().not());
+        InputHolder.get().text().textProperty().addListener((l, o, n) -> findMenuItem.setDisable(n.length() == 0));
+        InputHolder.get().text().selectionProperty().addListener((l, o, n) -> {
+            cutMenuItem.setDisable(n.getLength() == 0);
+            copyMenuItem.setDisable(n.getLength() == 0);
+            deleteMenuItem.setDisable(n.getLength() == 0);
         });
     }
 }
