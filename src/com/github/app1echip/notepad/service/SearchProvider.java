@@ -2,7 +2,6 @@ package com.github.app1echip.notepad.service;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -94,23 +93,23 @@ public class SearchProvider {
         int index = indexes.get(nowAt);
         int length = query.get().length();
         if (replace) {
-            InputHolder.get().text().replaceText(index, index + length, replacer.get());
+            InputProvider.get().text().replaceText(index, index + length, replacer.get());
             length = replacer.get().length();
         }
-        InputHolder.get().text().selectRange(index, index + length);
+        InputProvider.get().text().selectRange(index, index + length);
         dirty = false;
     }
 
     public void replaceAll() {
-        String context = InputHolder.get().text().getText();
+        String context = InputProvider.get().text().getText();
         context = context.replaceAll(query.get(), replacer.get());
-        InputHolder.get().text().setText(context);
+        InputProvider.get().text().setText(context);
     }
 
     private void updateIndexes() {
         nowAt = -1;
         indexes.clear();
-        String context = InputHolder.get().text().getText();
+        String context = InputProvider.get().text().getText();
         String query = this.query.get();
         if (!matchCase.get()) {
             context = context.toLowerCase();

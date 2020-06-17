@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.layout.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
-
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="339.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.prompt.FontSelectorController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="389.0" prefWidth="339.0"
+    xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.prompt.FontSelectorController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.0" minWidth="10.0" prefWidth="217.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="278.0" minWidth="10.0" prefWidth="79.0" />
@@ -35,11 +35,11 @@
                 <Label fx:id="previewLabel" text="The quick brown fox jumps over the lazy dog." />
             </children>
         </VBox>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <children>
+        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <children>
                 <Button fx:id="okayButton" mnemonicParsing="false" text="OK" />
                 <Button fx:id="cancelButton" mnemonicParsing="false" text="Cancel" />
-         </children>
-      </HBox>
+            </children>
+        </HBox>
     </children>
 </GridPane>

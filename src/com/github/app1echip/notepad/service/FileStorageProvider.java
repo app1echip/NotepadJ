@@ -6,12 +6,22 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.stream.Collectors;
+import java.util.Optional;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class FileStorageProvider {
     private static FileStorageProvider instance = new FileStorageProvider();
 
     public static FileStorageProvider get() {
         return instance;
+    }
+
+    public enum ANSWER {
+        SAVE, DONT, CANCEL
     }
 
     private String buffer;
@@ -23,12 +33,12 @@ public class FileStorageProvider {
     }
 
     public boolean dirty() {
-        return !InputHolder.get().text().getText().equals(buffer);
+        return !InputProvider.get().text().getText().equals(buffer);
     }
 
     public void setFile(File file) {
         this.file = file;
-        TitleProvider.get().update(file);
+        WindowProvider.get().updateTitle(file);
     }
 
     public void load(File file) {
@@ -41,28 +51,47 @@ public class FileStorageProvider {
                 if (c == '\r')
                     sep = "\r\n";
             } catch (Exception e) {
-
             }
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 buffer = reader.lines().collect(Collectors.joining(sep));
-                InputHolder.get().text().setText(buffer);
+                InputProvider.get().text().setText(buffer);
             } catch (Exception e) {
-                // TODO: handle exception
             }
         } else {
             buffer = "";
-            InputHolder.get().text().clear();
+            InputProvider.get().text().clear();
         }
     }
 
-    public void save(File file) {
-        setFile(file);
+    public void save(boolean saveAs) {
+        if (saveAs || file == null) {
+            file = new FileChooser().showSaveDialog(new Stage());
+            setFile(file);
+        }
         if (file != null)
             try (FileWriter writer = new FileWriter(file)) {
-                buffer = InputHolder.get().text().getText();
+                buffer = InputProvider.get().text().getText();
                 writer.write(buffer);
             } catch (IOException exception) {
-                // TODO: handle exception
             }
+    }
+
+    public ANSWER promptToSave() {
+        Alert alert = new Alert(AlertType.NONE);
+        alert.setTitle("Notepad");
+        alert.setHeaderText(null);
+        alert.setContentText(String.format("Do you want to save changes to %s?",
+                WindowProvider.get().updateTitle(FileStorageProvider.get().getFile())));
+        ButtonType saveButtonType = new ButtonType("Save");
+        ButtonType doNotSaveButtonType = new ButtonType("Don't Save");
+        ButtonType cancelButtonType = new ButtonType("Cancel");
+        alert.getButtonTypes().setAll(saveButtonType, doNotSaveButtonType, cancelButtonType);
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.get() == saveButtonType)
+            return ANSWER.SAVE;
+        else if (option.get() == doNotSaveButtonType)
+            return ANSWER.DONT;
+        else
+            return ANSWER.CANCEL;
     }
 }

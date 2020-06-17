@@ -1,13 +1,12 @@
 package com.github.app1echip.notepad.service;
 
 import java.io.File;
-
 import javafx.stage.Stage;
 
-public class TitleProvider {
-    private static TitleProvider instance = new TitleProvider();
+public class WindowProvider {
+    private static WindowProvider instance = new WindowProvider();
 
-    public static TitleProvider get() {
+    public static WindowProvider get() {
         return instance;
     }
 
@@ -17,7 +16,11 @@ public class TitleProvider {
         this.stage = stage;
     }
 
-    public String update(File file) {
+    public Stage getStage() {
+        return stage;
+    }
+
+    public String updateTitle(File file) {
         String display = "Untitled";
         if (file != null) {
             String[] names = file.toString().split(File.separator);

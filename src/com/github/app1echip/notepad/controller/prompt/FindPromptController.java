@@ -31,5 +31,6 @@ public class FindPromptController {
         wrapAroundCheckBox.selectedProperty().bindBidirectional(SearchProvider.get().wrapAroundProperty());
         textField.textProperty().bindBidirectional(SearchProvider.get().queryProperty());
         findNextButton.setOnAction(e -> SearchProvider.get().find(SWITCH.NEXT));
+        cancelButton.setOnAction(e -> cancelButton.getScene().getWindow().hide());
     }
 }

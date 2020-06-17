@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.input.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
-<Menu mnemonicParsing="false" text="File"
-    xmlns="http://javafx.com/javafx/8"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.menu.FileMenuController">
+
+<Menu mnemonicParsing="false" text="File" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.menu.FileMenuController">
     <items>
-        <MenuItem fx:id="newMenuItem" mnemonicParsing="false" onAction="#newOnAction" text="New" />
-        <MenuItem fx:id="newWindowMenuItem" mnemonicParsing="false" onAction="#newWindowOnAction" text="New Window" />
-        <MenuItem fx:id="openMenuItem" mnemonicParsing="false" onAction="#openOnAction" text="Open..." />
-        <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" onAction="#saveOnAction" text="Save" />
-        <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" onAction="#saveAsOnAction" text="Save As..." />
-        <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exitOnClick" text="Exit" />
+        <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New">
+            <accelerator>
+                <KeyCodeCombination alt="UP" code="N" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+            </accelerator>
+        </MenuItem>
+        <MenuItem fx:id="openMenuItem" mnemonicParsing="false" text="Open...">
+            <accelerator>
+                <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+            </accelerator>
+        </MenuItem>
+        <MenuItem fx:id="saveMenuItem" mnemonicParsing="false" text="Save">
+            <accelerator>
+                <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+            </accelerator>
+        </MenuItem>
+        <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" text="Save As..." />
+        <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" text="Exit" />
     </items>
 </Menu>

@@ -2,10 +2,10 @@ package com.github.app1echip.notepad.service;
 
 import javafx.scene.control.TextArea;
 
-public class InputHolder {
-    private static InputHolder instance = new InputHolder();
+public class InputProvider {
+    private static InputProvider instance = new InputProvider();
 
-    public static InputHolder get() {
+    public static InputProvider get() {
         return instance;
     }
 

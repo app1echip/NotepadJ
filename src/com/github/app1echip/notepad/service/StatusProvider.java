@@ -23,8 +23,8 @@ public class StatusProvider {
     }
 
     public int[] getLnCol() {
-        int caret = InputHolder.get().text().getCaretPosition();
-        String content = InputHolder.get().text().getText();
+        int caret = InputProvider.get().text().getCaretPosition();
+        String content = InputProvider.get().text().getText();
         int ln = 1;
         int col = caret + 1;
         int id = content.indexOf(FileStorageProvider.get().sep);

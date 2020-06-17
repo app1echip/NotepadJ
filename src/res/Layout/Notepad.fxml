@@ -18,9 +18,9 @@
         </MenuBar>
     </top>
     <center>
-        <TextArea fx:id="area" prefHeight="200.0" prefWidth="200.0" />
+        <TextArea fx:id="area" prefHeight="200.0" prefWidth="200.0" stylesheets="@../Style/HideBorder.css"/>
     </center>
     <bottom>
-        <fx:include fx:id="statusBar" source = "StatusBar/Status.fxml"/>
+        <fx:include fx:id="statusBar" source = "StatusBar/Status.fxml" alignment="CENTER_RIGHT"/>
     </bottom>
 </BorderPane>

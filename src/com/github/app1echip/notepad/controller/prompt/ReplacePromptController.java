@@ -26,5 +26,6 @@ public class ReplacePromptController {
         findNextButton.setOnAction(e -> SearchProvider.get().find(SWITCH.NEXT));
         replaceButton.setOnAction(e -> SearchProvider.get().find(SWITCH.NEXT, true));
         replaceAllButton.setOnAction(e -> SearchProvider.get().replaceAll());
+        cancelButton.setOnAction(e -> cancelButton.getScene().getWindow().hide());
     }
 }

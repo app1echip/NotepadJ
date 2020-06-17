@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<HBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.status.StatusController">
+<HBox
+    xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.status.StatusController">
     <children>
-        <Label fx:id="lineColumnLabel" alignment="CENTER_RIGHT" text="Ln 1, Col 1" />
-      <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
-        <Label fx:id="zoomLevelLabel" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" text="100%" />
-      <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
-        <Label fx:id="lineSeparatorLabel" alignment="CENTER_RIGHT" layoutX="46.0" layoutY="10.0" text="Windows (CRLF)" />
-      <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
-        <Label fx:id="encodingLabel" alignment="CENTER_RIGHT" layoutX="82.0" layoutY="10.0" text="UTF-8" />
+        <Label fx:id="lineColumnLabel" alignment="CENTER_RIGHT" text="Ln 1, Col 1" HBox.hgrow="ALWAYS" />
+        <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
+        <Label fx:id="zoomLevelLabel" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="10.0" text="100%" HBox.hgrow="ALWAYS" />
+        <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
+        <Label fx:id="lineSeparatorLabel" alignment="CENTER_RIGHT" layoutX="46.0" layoutY="10.0" text="Windows (CRLF)" HBox.hgrow="ALWAYS" />
+        <Separator orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0" />
+        <Label fx:id="encodingLabel" alignment="CENTER_RIGHT" layoutX="82.0" layoutY="10.0" text="UTF-8" HBox.hgrow="ALWAYS" />
     </children>
 </HBox>

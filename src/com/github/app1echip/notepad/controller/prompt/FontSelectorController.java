@@ -1,7 +1,7 @@
 package com.github.app1echip.notepad.controller.prompt;
 
 import com.github.app1echip.notepad.service.FontProvider;
-import com.github.app1echip.notepad.service.InputHolder;
+import com.github.app1echip.notepad.service.InputProvider;
 
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
@@ -53,20 +53,20 @@ public class FontSelectorController {
         okayButton.setOnAction(e -> {
             for (String face : fList)
                 if (fontTextField.getText().toLowerCase().equals(face.toLowerCase()))
-                    FontProvider.get().fontFace = face;
+                    FontProvider.get().fontFaceProperty().set(face);
             try {
                 double inputSize = Double.parseDouble(sizeTextField.getText());
                 if (inputSize >= 0)
-                    FontProvider.get().fontSize.set(inputSize);
+                    FontProvider.get().fontSizeProperty().set(inputSize);
             } catch (Exception exception) {
-                // TODO: handle exception
             }
-            FontProvider.get().updateFont();
+            okayButton.getScene().getWindow().hide();
         });
+        cancelButton.setOnAction(e -> cancelButton.getScene().getWindow().hide());
     }
 
     public void postInitialize() {
-        fontTextField.setText(InputHolder.get().text().getFont().getFamily().toString());
-        sizeTextField.setText(String.valueOf((int) InputHolder.get().text().getFont().getSize()));
+        fontTextField.setText(InputProvider.get().text().getFont().getFamily().toString());
+        sizeTextField.setText(String.valueOf((int) InputProvider.get().text().getFont().getSize()));
     }
 }
