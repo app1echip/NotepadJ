@@ -16,14 +16,13 @@ public class ViewMenuController {
     private @FXML void initialize() {
         statusBarCheckMenuItem.selectedProperty().addListener((l, o, n) -> StatusProvider.get().setShow(n));
         restoreDefaultZoomItem.setOnAction(e -> {
-            FontProvider.get().scaleProperty().set(1.0);
+            FontProvider.get().scaleProperty().set(5);
         });
-        zoomInMenuItem.setOnAction(
-                e -> FontProvider.get().scaleProperty().set(FontProvider.get().scaleProperty().get() + 0.2));
+        zoomInMenuItem
+                .setOnAction(e -> FontProvider.get().scaleProperty().set(FontProvider.get().scaleProperty().get() + 1));
         zoomOutMenuItem.setOnAction(e -> {
-            if (FontProvider.get().scaleProperty().get() > 0.2) {
-                FontProvider.get().scaleProperty().set(FontProvider.get().scaleProperty().get() - 0.2);
-            }
+            if (FontProvider.get().scaleProperty().get() > 1)   
+                FontProvider.get().scaleProperty().set(FontProvider.get().scaleProperty().get() - 1);
         });
     }
 }

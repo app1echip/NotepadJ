@@ -25,7 +25,7 @@ public class StatusController {
     private @FXML void initialize() {
         lineSeparatorLabel.setText(FileStorageProvider.get().sep.equals("\n") ? "Unix (LF)" : "Windows (CRLF)");
         FontProvider.get().scaleProperty()
-                .addListener((l, o, n) -> zoomLevelLabel.setText(String.format("%d%%", (int) (n.doubleValue() * 100))));
+                .addListener((l, o, n) -> zoomLevelLabel.setText(String.format("%d%%", n.intValue() * 20)));
         encodingLabel.setText(System.getProperty("file.encoding"));
     }
 }

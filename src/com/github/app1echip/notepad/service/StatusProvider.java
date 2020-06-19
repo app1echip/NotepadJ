@@ -27,10 +27,11 @@ public class StatusProvider {
         String content = InputProvider.get().text().getText();
         int ln = 1;
         int col = caret + 1;
-        int id = content.indexOf(FileStorageProvider.get().sep);
+        String sep = FileStorageProvider.get().sep;
+        int id = content.indexOf(sep);
         while (id < caret && id != -1) {
             col = caret - id;
-            id = content.indexOf(FileStorageProvider.get().sep, id + 1);
+            id = content.indexOf(sep, id + sep.length());
             ln++;
         }
         return new int[] { ln, col };

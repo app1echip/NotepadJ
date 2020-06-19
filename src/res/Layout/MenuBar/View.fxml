@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.input.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <Menu mnemonicParsing="false" text="View"
@@ -7,9 +8,21 @@
     <items>
         <Menu mnemonicParsing="false" text="Zoom">
             <items>
-                <MenuItem fx:id="zoomInMenuItem" mnemonicParsing="false" text="Zoom In" />
-                <MenuItem fx:id="zoomOutMenuItem" mnemonicParsing="false" text="Zoom Out" />
-                <MenuItem fx:id="restoreDefaultZoomItem" mnemonicParsing="false" text="Restore Default Zoom" />
+                <MenuItem fx:id="zoomInMenuItem" mnemonicParsing="false" text="Zoom In">
+                    <accelerator>
+                        <KeyCodeCombination alt="UP" code="PERIOD" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                    </accelerator>
+                </MenuItem>
+                <MenuItem fx:id="zoomOutMenuItem" mnemonicParsing="false" text="Zoom Out">
+                    <accelerator>
+                        <KeyCodeCombination alt="UP" code="COMMA" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                    </accelerator>
+                </MenuItem>
+                <MenuItem fx:id="restoreDefaultZoomItem" mnemonicParsing="false" text="Restore Default Zoom">
+                    <accelerator>
+                        <KeyCodeCombination alt="UP" code="SLASH" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                    </accelerator>
+                </MenuItem>
             </items>
         </Menu>
         <CheckMenuItem fx:id="statusBarCheckMenuItem" mnemonicParsing="false" selected="true" text="Status Bar" />

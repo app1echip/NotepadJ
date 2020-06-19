@@ -18,4 +18,5 @@ NotepadJ has all critical features of the `notepad.exe`, including:
 
 Developed with Oracle JDK 1.8.0_251 with bundled JavaFX.  
 All code is written and tested with Visual Studio Code on Linux.  
-Project uses a basic eclipse file structure, which any normal IDEs(and CLI tools) should support.
+Project uses a basic eclipse file structure, which any normal IDEs(and CLI tools) should support.  
+Windows support is modest.

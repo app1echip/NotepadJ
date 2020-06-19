@@ -25,7 +25,7 @@ public class WindowProvider {
     public String updateTitle(File file) {
         String display = "Untitled";
         if (file != null) {
-            String[] names = file.toString().split(Pattern.quote(File.separator));
+            String[] names = file.toString().split(Pattern.quote(FileStorageProvider.get().sep));
             display = names[names.length - 1];
         }
         stage.setTitle(display + " - Notepad");

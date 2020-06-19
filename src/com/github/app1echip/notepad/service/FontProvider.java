@@ -1,7 +1,9 @@
 package com.github.app1echip.notepad.service;
 
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.TextArea;
@@ -22,7 +24,7 @@ public class FontProvider {
 
     private StringProperty fontFace = new SimpleStringProperty(Font.getDefault().getFamily());
     private DoubleProperty fontSize = new SimpleDoubleProperty(Font.getDefault().getSize());
-    private DoubleProperty scale = new SimpleDoubleProperty(1.0);
+    private IntegerProperty scale = new SimpleIntegerProperty(5);
 
     public StringProperty fontFaceProperty() {
         return fontFace;
@@ -32,12 +34,12 @@ public class FontProvider {
         return fontSize;
     }
 
-    public DoubleProperty scaleProperty() {
+    public IntegerProperty scaleProperty() {
         return scale;
     }
 
     private void updateFont() {
         TextArea area = InputProvider.get().text();
-        area.setFont(Font.font(fontFace.get(), fontSize.get() * scale.get()));
+        area.setFont(Font.font(fontFace.get(), fontSize.get() * scale.get() * 0.2));
     }
 }

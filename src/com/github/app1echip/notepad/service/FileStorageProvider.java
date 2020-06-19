@@ -26,7 +26,7 @@ public class FileStorageProvider {
 
     private String buffer;
     private File file;
-    public String sep = System.lineSeparator();
+    public String sep = File.separator;
 
     public File getFile() {
         return file;
@@ -44,6 +44,7 @@ public class FileStorageProvider {
     public void load(File file) {
         setFile(file);
         if (file != null) {
+            sep = "\n";
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
                 int c = reader.read();
                 while (c != -1 && c != '\r')

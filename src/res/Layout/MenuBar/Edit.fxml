@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.input.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
-
-<Menu mnemonicParsing="false" text="Edit" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.menu.EditMenuController">
+<Menu mnemonicParsing="false" text="Edit"
+    xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.menu.EditMenuController">
     <items>
         <MenuItem fx:id="undoMenuItem" mnemonicParsing="false" text="Undo">
             <accelerator>
@@ -43,12 +43,12 @@
         </MenuItem>
         <MenuItem fx:id="findNextMenuItem" disable="true" mnemonicParsing="false" text="Find Next">
             <accelerator>
-                <KeyCodeCombination alt="UP" code="F3" control="UP" meta="UP" shift="UP" shortcut="ANY" />
+                <KeyCodeCombination alt="UP" code="J" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
             </accelerator>
         </MenuItem>
         <MenuItem fx:id="findPreviousMenuItem" disable="true" mnemonicParsing="false" text="Find Previous">
             <accelerator>
-                <KeyCodeCombination alt="UP" code="F3" control="UP" meta="UP" shift="DOWN" shortcut="UP" />
+                <KeyCodeCombination alt="UP" code="J" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
             </accelerator>
         </MenuItem>
         <MenuItem fx:id="replaceMenuItem" mnemonicParsing="false" text="Replace...">
@@ -68,7 +68,7 @@
         </MenuItem>
         <MenuItem fx:id="timeDateMenuItem" mnemonicParsing="false" text="Time/Date">
             <accelerator>
-                <KeyCodeCombination alt="ANY" code="F5" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                <KeyCodeCombination alt="ANY" code="T" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
             </accelerator>
         </MenuItem>
     </items>

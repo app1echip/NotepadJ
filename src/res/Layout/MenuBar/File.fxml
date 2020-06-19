@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.input.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
-
-<Menu mnemonicParsing="false" text="File" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.menu.FileMenuController">
+<Menu mnemonicParsing="false" text="File"
+    xmlns="http://javafx.com/javafx/8"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.app1echip.notepad.controller.menu.FileMenuController">
     <items>
         <MenuItem fx:id="newMenuItem" mnemonicParsing="false" text="New">
             <accelerator>
