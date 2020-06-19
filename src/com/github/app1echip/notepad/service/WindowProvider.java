@@ -1,6 +1,8 @@
 package com.github.app1echip.notepad.service;
 
 import java.io.File;
+import java.util.regex.Pattern;
+
 import javafx.stage.Stage;
 
 public class WindowProvider {
@@ -23,7 +25,7 @@ public class WindowProvider {
     public String updateTitle(File file) {
         String display = "Untitled";
         if (file != null) {
-            String[] names = file.toString().split(File.separator);
+            String[] names = file.toString().split(Pattern.quote(File.separator));
             display = names[names.length - 1];
         }
         stage.setTitle(display + " - Notepad");
